@@ -1,0 +1,13 @@
+package com.tts.EcommerceProject.repository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.tts.EcommerceProject.model.UserModel;
+
+
+@Repository
+public interface UserRepository extends CrudRepository<UserModel, Long>{
+
+	UserModel findByUsername(String username);
+}
