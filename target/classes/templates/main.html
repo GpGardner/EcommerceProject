@@ -1,8 +1,8 @@
 	<!DOCTYPE HTML>
   <html xmlns:th="http://www.thymeleaf.org" lang="en">
-  <head th:replace="fragments :: head"></head>
+  <head th:replace="fragments/fragments :: head"></head>
   <body>
-  <div th:replace="fragments :: navbar" ></div>
+  <div th:replace="fragments/fragments :: navbar" ></div>
  
   <main role="main">
       <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -10,14 +10,25 @@
           <div class="container">
               <h1 class="display-3">Tech Talent Store</h1>
               <p>This is a small e-commerce application that allows the user to purchase some of a few products that are offered here. </p>
-              <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more &raquo;</a></p>
+              <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more <!-- &raquo; --></a></p>
           </div>
       </div>
  
       <div class="container">
           <div class="row">
               <!--Fill this part in-->
+              <div class="col">
               <div class="card" style="width: 18rem;">
+				  <img src="hhttps://www.google.com/imgres?imgurl=https%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB1v9CvXZfrK1Rjy0Fmq6xhEXXa0%2FAssorted-Colors-Classical-Pocket-Protector-for-Pen.jpg_350x350.jpg&imgrefurl=https%3A%2F%2Fwww.alibaba.com%2Fproduct-detail%2FAssorted-Colors-Classical-Pocket-Protector-for_60435735992.html&tbnid=LqzytsJCiROWSM&vet=12ahUKEwjw0PGUvernAhVR0FMKHcZhB-sQMygKegUIARDQAg..i&docid=UKKk9VPfXpL4GM&w=350&h=350&q=pocket%20protector&ved=2ahUKEwjw0PGUvernAhVR0FMKHcZhB-sQMygKegUIARDQAg" style="img { width;150px:}" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <h5 class="card-title">Name</h5>
+				    <p class="card-text">Description: </p>
+				    <p class="card-text">Price: </p>
+				    <a href="#" class="btn btn-primary">Go somewhere</a>
+				  </div>
+			  </div>
+			  
+			  <div class="card" style="width: 18rem;">
 				  <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
 				  <div class="card-body">
 				    <h5 class="card-title">Name</h5>
@@ -26,12 +37,35 @@
 				    <a href="#" class="btn btn-primary">Go somewhere</a>
 				  </div>
 			  </div>
+			  </div>
+			  
+			  <div class="col">
+			  <div class="card" style="width: 18rem;">
+				  <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <h5 class="card-title">Name</h5>
+				    <p class="card-text">Description: </p>
+				    <p class="card-text">Price: </p>
+				    <a href="#" class="btn btn-primary">Go somewhere</a>
+				  </div>
+			  </div>
+			  
+			  <div class="card" style="width: 18rem;">
+				  <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <h5 class="card-title">Name</h5>
+				    <p class="card-text">Description: </p>
+				    <p class="card-text">Price: </p>
+				    <a href="#" class="btn btn-primary">Go somewhere</a>
+				  </div>
+			  </div>
+			  </div>
               
               
           </div>
       </div>
   </main>
  
-  <footer th:replace="fragments :: footer"></footer>
+  <footer th:replace="fragments/fragments :: footer"></footer>
   </body>
   </html>

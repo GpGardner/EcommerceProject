@@ -1,45 +1,72 @@
 package com.tts.EcommerceProject.model;
 
-import javax.persistence.Access;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
-
+public class User implements UserDetails{
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id")
-	private long id; 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	
-	@NotEmpty (message = "Please enter username")
-	@Length( min = 3, message = "Your username must contain ay least three characters")
-	@Length (max = 20, message = "Your username cannot be more than 20 characters long")
-	@Pattern (regexp= "[^\\s]", message= "Your username cannot contain spaces")
+	@NotEmpty
 	private String username;
-	
-	@Length (min = 8, message = "Password needs to be at least 8 characters")
-	@NotEmpty (message = "Please provde a password")
-	//@JsonProperty(access= Access.WRITE_ONLY)
+	@NotEmpty
 	private String password;
 	
+	//makes map into a table with Product as the foreign key
+	@ElementCollection
+	protected Map<Product, Integer> cart;
+
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 	
 }
