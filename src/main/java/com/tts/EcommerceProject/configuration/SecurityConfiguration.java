@@ -26,6 +26,8 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 protected void configure(HttpSecurity http) throws Exception {
  http
      .authorizeRequests()
+     .antMatchers("/").permitAll()
+     .antMatchers("/console/**").permitAll()
          .antMatchers("/cart").authenticated()
      .and().formLogin()
          .loginPage("/signin")
@@ -33,5 +35,8 @@ protected void configure(HttpSecurity http) throws Exception {
      .and().logout()
          .logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
          .logoutSuccessUrl("/");
+ 
+ 	http.csrf().disable();
+	http.headers().frameOptions().disable();
 	}
 }
