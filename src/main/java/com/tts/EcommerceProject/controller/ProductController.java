@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.tts.EcommerceProject.model.Product;
+import com.tts.EcommerceProject.service.ProductService;
+
 @Controller
 public class ProductController {
     @Autowired
