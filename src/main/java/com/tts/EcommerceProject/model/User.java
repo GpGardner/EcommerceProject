@@ -16,32 +16,22 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @SuppressWarnings("serial")
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-public class User implements UserDetails{
-	
+public class User implements UserDetails {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@NotEmpty
 	private String username;
 	@NotEmpty
 	private String password;
-	
-	//makes map into a table with Product as the foreign key
+
+	// makes map into a table with Product as the foreign key
 	@ElementCollection
 	protected Map<Product, Integer> cart;
-
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -68,5 +58,63 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
+	public User() {
+	}
+
+	public User(String username, String password, Map<Product, Integer> cart) {
+
+		this.username = username;
+		this.password = password;
+		this.cart = cart;
+	}
+
+	public long getId() {
+		return this.id;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Map<Product, Integer> getCart() {
+		return this.cart;
+	}
+
+	public void setCart(Map<Product, Integer> cart) {
+		this.cart = cart;
+	}
+
+	public User id(long id) {
+		this.id = id;
+		return this;
+	}
+
+	public User username(String username) {
+		this.username = username;
+		return this;
+	}
+
+	public User password(String password) {
+		this.password = password;
+		return this;
+	}
+
+	public User cart(Map<Product, Integer> cart) {
+		this.cart = cart;
+		return this;
+	}
+
 }
