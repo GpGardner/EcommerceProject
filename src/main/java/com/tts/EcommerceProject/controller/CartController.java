@@ -56,32 +56,32 @@ public class CartController {
 
   @PostMapping("/cart")
   public String addToCart(@RequestParam long id) {
-      Product p = productService.findById(id);
-      setQuantity(p, cart().getOrDefault(p, 0) + 1);
+      Product product = productService.findById(id);
+      setQuantity(product, cart().getOrDefault(product, 0) + 1);
       return "cart";
   }
 
   @PatchMapping("/cart")
   public String updateQuantities(@RequestParam long[] id, @RequestParam int[] quantity) {
       for(int i = 0; i < id.length; i++) {
-          Product p = productService.findById(id[i]);
-          setQuantity(p, quantity[i]);
+          Product product = productService.findById(id[i]);
+          setQuantity(product, quantity[i]);
       }
       return "cart";
   }
 
   @DeleteMapping("/cart")
   public String removeFromCart(@RequestParam long id) {
-      Product p = productService.findById(id);
-      setQuantity(p, 0);
+      Product product = productService.findById(id);
+      setQuantity(product, 0);
       return "cart";
   }
 
-  private void setQuantity(Product p, int quantity) {
+  private void setQuantity(Product product, int quantity) {
       if(quantity > 0)
-          cart().put(p, quantity);
+          cart().put(product, quantity);
       else
-          cart().remove(p);
+          cart().remove(product);
 
       userService.updateCart(cart());
   }

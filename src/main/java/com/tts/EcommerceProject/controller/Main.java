@@ -51,8 +51,4 @@ public class Main {
         return "about";
     }
     
-//    @GetMapping("/signin")
-//    public String signIn() {
-//    	return "signin";
-//    }
 }
