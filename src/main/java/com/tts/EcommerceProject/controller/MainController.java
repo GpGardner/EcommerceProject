@@ -13,8 +13,8 @@ import com.tts.EcommerceProject.model.Product;
 import com.tts.EcommerceProject.service.ProductService;
 
 @Controller
-public class Main {
-	@Autowired
+public class MainController {
+    @Autowired
     ProductService productService;
 
     @GetMapping("/")
@@ -38,9 +38,8 @@ public class Main {
     }
 
     @GetMapping("/filter")
-    public String filter(@RequestParam(required = false) String category,
-                         @RequestParam(required = false) String brand,
-                         Model model) {
+    public String filter(@RequestParam(required = false) String category, @RequestParam(required = false) String brand,
+            Model model) {
         List<Product> filtered = productService.findByBrandAndOrCategory(brand, category);
         model.addAttribute("products", filtered); // Overrides the @ModelAttribute above.
         return "main";
@@ -50,5 +49,5 @@ public class Main {
     public String about() {
         return "about";
     }
-    
+
 }

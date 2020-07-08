@@ -15,9 +15,7 @@
           </p>
           <p>
             <a class="btn btn-primary btn-lg" href="/about" role="button"
-              >Learn more
-              <!-- &raquo; --></a
-            >
+              >Learn more</a>
           </p>
         </div>
       </div>
@@ -25,9 +23,9 @@
       <!--TODO programattically fill these in-->
 
       <div class="container">
-		<div class="row">
+		<div class="row justify-content-around">
 			<div th:each="product : ${products}" class="card mb-4 col-xs-12 col-sm-6 col-md-4" style="width: 18rem;">
-				<img th:src="${product.imageURL}" class="card-img-top" alt="...">
+				<img th:src="${product.imageURL}" class="card-img-top" alt="..." style="width: 400px; height: 200px">
 				<div class="card-body">
 				  <h5 th:text="${product.brand}"></h5>
 				  <h5 th:text="${product.name}"></h5>
